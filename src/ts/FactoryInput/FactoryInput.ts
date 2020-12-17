@@ -1,20 +1,20 @@
 abstract class InputCreator {
-    abstract InputFactory(): Input;
+    abstract createInput(): Input;
 
     render():HTMLInputElement {
-        const product = this.InputFactory();
+        const product = this.createInput();
         return product.render();
     }
 }
 
 export class InputText extends InputCreator {
-    InputFactory(): Input {
+    createInput(): Input {
         return new InputTypeText();
     }
 }
 
 class InputNumber extends InputCreator {
-    InputFactory(): Input {
+    createInput(): Input {
         return new InputTypeNumber();
     }
 }
@@ -24,7 +24,7 @@ interface Input {
 }
 
 class InputTypeText implements Input {
-    render(label?: 'string', reference?:string):HTMLInputElement {
+    render():HTMLInputElement {
       const input = document.createElement('input');
       input.setAttribute('type', 'text');
 
@@ -33,7 +33,7 @@ class InputTypeText implements Input {
 }
 
 class InputTypeNumber implements Input {
-    render(label?:string, reference?:string):HTMLInputElement {
+    render():HTMLInputElement {
         const input = document.createElement('input');
         input.setAttribute('type', 'number');
 
