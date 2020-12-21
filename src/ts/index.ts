@@ -8,9 +8,10 @@ const formJSON = JSON.stringify([
 ])
 
 
-const newForm = FormGenerator.makeForm(formJSON, 'JSON');
+FormGenerator.makeForm(formJSON);
+//setTimeout(FormGenerator.makeForm(formJSON, 'JSON'));
 
-
-const placeForForm = document.querySelector('#form');
-placeForForm.appendChild(newForm);
+//TODO transfer to makeForm
+//const placeForForm = document.querySelector('#form');
+//placeForForm.appendChild(newForm);
 

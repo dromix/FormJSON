@@ -5,7 +5,8 @@
       "noImplicitAny": true,
       "module": "es6",
       "target": "es5",
-      "allowJs": true
+      "allowJs": true,
+      "lib": ["es2019", "dom", "esnext", "dom.iterable"]
     },
     "exclude": [
       "**/*.spec.ts"
