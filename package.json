@@ -10,7 +10,9 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.21.0"
+  },
   "devDependencies": {
     "json-server": "^0.16.3",
     "nodemon": "^2.0.6",

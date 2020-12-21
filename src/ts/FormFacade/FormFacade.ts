@@ -24,7 +24,6 @@ class FormFacade {
         const app = document.querySelector('#app');
         app.appendChild(form);
         this.singleton.connectForm(form);
-
     }
 
     clearData() {

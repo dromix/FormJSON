@@ -21,6 +21,7 @@ class InputText implements ITextInput {
         const input = document.createElement('input');
         const label = document.createElement('label');
         input.setAttribute('type', 'text');
+        input.setAttribute('id', this.name);
         input.setAttribute('name', this.name);
         this.name ? label.setAttribute('for', this.name) : null
         label.innerText = this.label;
@@ -41,6 +42,7 @@ class InputNumber implements INumberInput {
         const input = document.createElement('input');
         const label = document.createElement('label');
         input.setAttribute('type', 'number');
+        input.setAttribute('id', this.name);
         input.setAttribute('name', this.name);
         this.name ? label.setAttribute('for', this.name) : null
         label.innerText = this.label;
