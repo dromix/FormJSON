@@ -1,16 +1,14 @@
 {
-    "compilerOptions": {
-      "outDir": "./dist/",
-      "sourceMap": true,
-      "noImplicitAny": true,
-      "module": "es6",
-      "target": "es5",
-      "downlevelIteration": true,
-      "allowJs": true,
-      "moduleResolution": "node",
-      "lib": ["es2019", "dom", "esnext", "dom.iterable"]
-    },
-    "exclude": [
-      "**/*.spec.ts"
-  ]
-  }
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "downlevelIteration": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "lib": ["es2019", "dom", "esnext", "dom.iterable"]
+  },
+  "exclude": ["**/*.spec.ts"]
+}
