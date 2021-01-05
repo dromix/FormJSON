@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = `http://localhost:3000/posts`;
+// TODO figure out with nice way to add path to dest server
+axios.defaults.baseURL = `http://localhost:3000/form`;
 axios.defaults.headers = { 'Content-Type': 'application/json' };
 
 export const postService = async (data: Object = {}) => {

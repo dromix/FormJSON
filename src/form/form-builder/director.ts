@@ -1,6 +1,5 @@
-import { formProperties } from '../../interface/interface';
+import { FormProps } from '../../interface/interface';
 import { FormBuilder } from './form-builder';
-import { InputFactory } from './input-factory/input-factory';
 
 export class Director {
   private builder: FormBuilder;
@@ -10,31 +9,18 @@ export class Director {
     return this;
   }
 
-  make(formSettings: []) {
-    formSettings.forEach((prop: formProperties) => {
-      switch (prop.type) {
-        case 'title':
-          return this.builder.addTitle({ tag: prop.tag, label: prop.label });
-        case 'input-number':
-          return this.builder.addInput({
-            ...InputFactory({
-              type: 'number',
-              label: prop.label,
-              name: prop.name
-            })
-          });
-        case 'input-text':
-          return this.builder.addInput({
-            ...InputFactory({
-              type: 'text',
-              label: prop.label,
-              name: prop.name
-            })
-          });
-        case 'submit':
-          return this.builder.addSubmit(prop.label);
-        default:
-          throw new Error('You should provide correct form settings');
+  make(formSettings: FormProps[]) {
+    formSettings.forEach((prop: FormProps) => {
+      if (prop.type === 'title') {
+        return this.builder.addTitle(prop);
+      }
+
+      if (prop.type === 'input-number' || prop.type === 'input-text') {
+        return this.builder.addInput(prop);
+      }
+
+      if (prop.type === 'submit') {
+        return this.builder.addSubmit(prop);
       }
     });
   }

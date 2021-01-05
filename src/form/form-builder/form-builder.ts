@@ -1,4 +1,11 @@
-import { Input, TitleProps } from '../../interface/interface';
+import {
+  FormInputNumber,
+  FormInputText,
+  FormSubmit,
+  FormTitle
+} from '../../interface/interface';
+import { createInput } from './input-factory/input-factory';
+
 export class FormBuilder {
   form: HTMLFormElement;
   constructor() {
@@ -6,25 +13,28 @@ export class FormBuilder {
     this.form.setAttribute('action', '#');
   }
 
-  addTitle({ tag = 'h1', label = '' }: TitleProps) {
+  addTitle({ tag = 'h1', label = '' }: FormTitle) {
     const title = document.createElement(tag);
+
     title.innerText = label;
+
     this.form.appendChild(title);
     return this;
   }
 
-  addInput({ input, label }: Input) {
-    if (label) {
-      this.form.appendChild(label);
-    }
+  addInput(prop: FormInputNumber | FormInputText) {
+    let input: HTMLElement = createInput(prop);
+
     this.form.appendChild(input);
     return this;
   }
 
-  addSubmit(label: string = 'Submit') {
+  addSubmit({ label = 'Submit' }: FormSubmit) {
     const button = document.createElement('button');
-    button.setAttribute('type', 'submit');
+
     button.innerText = label;
+    button.setAttribute('type', 'submit');
+
     this.form.appendChild(button);
     return this;
   }

@@ -6,7 +6,7 @@ module.exports = {
     mode: 'production',
     devtool: 'source-map',
     // entry files
-    entry: './src/ts/index.ts',
+    entry: './src/index.ts',
 
     // output bundles (location)
     output: {

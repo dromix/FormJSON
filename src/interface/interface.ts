@@ -1,23 +1,35 @@
-export interface formProperties {
-  type: 'title' | 'input-number' | 'input-text' | 'submit';
-  label: string;
-  name: 'string';
-  tag: string;
-}
-
-export interface formSettings {
+export interface FormSourceSetting {
   type: string;
   label: string;
   reference: string;
   fieldType: string;
 }
 
-export interface TitleProps {
+export interface FormTitle {
+  type: 'title';
+  label: string;
   tag: string;
+}
+
+export interface FormSubmit {
+  type: 'submit';
   label: string;
 }
 
-export interface Input {
-  input: HTMLInputElement;
-  label: HTMLLabelElement;
+export interface FormInputText {
+  type: 'input-text';
+  label?: string;
+  name: string;
 }
+
+export interface FormInputNumber {
+  type: 'input-number';
+  label?: string;
+  name: string;
+}
+
+export type FormProps =
+  | FormTitle
+  | FormSubmit
+  | FormInputText
+  | FormInputNumber;

@@ -1,17 +1,9 @@
 import { postService } from '../../service/post-service';
+
 interface DOMEvent<T extends EventTarget> extends Event {
   target: T;
 }
-declare global {
-  interface ObjectConstructor {
-    fromEntries(xs: [string | number | symbol, any][]): object;
-  }
-}
 
-const fromEntries = (xs: [string | number | symbol, any][]) =>
-  Object.fromEntries
-    ? Object.fromEntries(xs)
-    : xs.reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
 export class Singleton {
   private static INSTANCE: Singleton;
 
@@ -30,8 +22,9 @@ export class Singleton {
 
   onSubmit = (e: DOMEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = fromEntries([...new FormData(this.form)]);
-    console.log(formData);
+
+    const formData = Object.fromEntries([...new FormData(this.form)]);
+
     postService(formData);
   };
 
@@ -39,8 +32,8 @@ export class Singleton {
     if (!this.connected) {
       this.connected = true;
       this.form = form;
+
       this.form.addEventListener('submit', this.onSubmit);
-      console.log('Connection successful');
     }
   }
 
